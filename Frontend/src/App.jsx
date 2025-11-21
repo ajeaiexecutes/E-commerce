@@ -56,7 +56,7 @@ function App() {
 
             <Route path="/login" element={<UserLogin />}></Route>
 
-            <Route path="/home" element={<Home />}></Route>
+            <Route path="/" element={<Home />}></Route>
 
             <Route path="/products" element={<ProductGrid />}></Route>
             <Route

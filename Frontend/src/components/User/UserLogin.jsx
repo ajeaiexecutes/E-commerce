@@ -22,7 +22,7 @@ const UserLogin = () => {
       console.log("Response:", res);
       setIsLogged(true);
       alert("Login successful");
-      navigate("/home");
+      navigate("/");
     } catch (err) {
       console.error("Login error:", err);
       alert(err.response?.data?.message || "Login failed");

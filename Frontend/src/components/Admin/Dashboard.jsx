@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios';
+import api  from '../../axios/axios';
 import { useNavigate ,Outlet,Link} from 'react-router-dom';
 
 
@@ -9,7 +9,7 @@ const Dashboard = () => {
 
   async function handleLogout(){
     try {
-      await axios.post('http://localhost:3000/logout',
+      await axios.post('/logout',
         {},
         { withCredentials: true });
       

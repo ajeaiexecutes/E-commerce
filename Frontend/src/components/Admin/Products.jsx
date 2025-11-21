@@ -79,7 +79,7 @@ const handleDelete = async (id) => {
               <td className="p-3 border-b">{pro.price }</td>
               <td className="p-3 border-b">
                 <img
-                  src={`http://localhost:3000${pro.image}`}
+                  src={`${import.meta.env.VITE_API_URL.replace('/api','')}${pro.image}`}
                   alt="Product"
                   className="rounded-md w-12 h-12 object-cover"
                 />

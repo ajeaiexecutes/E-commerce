@@ -10,9 +10,11 @@ import * as admincontroller from '../Controllers/adminController.js'
 const router = express.Router();
 import multer from "multer";
 import path from 'path';
-import fs from 'fs'
+import fs from 'fs';
+import dotenv from 'dotenv';
+import mongoose from "mongoose";
 
-
+dotenv.config();
 
 const uploadDir = path.join(process.cwd(), "uploads");
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir);
@@ -30,18 +32,6 @@ const upload = multer({ storage });
 
 
 
-router.use(session({
-    secret: 'mysecret',
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create({
-        mongoUrl: "mongodb://localhost:27017/Thrifts",
-        collectionName:'sessions'
-    }),
-    cookie: { //secure:false
-        maxAge: 1000 * 60 * 60
-    }
-}));
 
 
 router.post('/register', auth.register);

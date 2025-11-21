@@ -11,7 +11,7 @@ const AdminLogin = () => {
 
     try {
       const res = await api.post(
-        "http://localhost:3000/admin/login",
+        "/admin/login",
         { email, password },
         { withCredentials: true }
       );

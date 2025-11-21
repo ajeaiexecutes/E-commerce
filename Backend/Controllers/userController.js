@@ -86,10 +86,12 @@ export async function adminDashboard(req, res) {
 }
 //cart
 export async function addItemToCart(req, res) {
+	console.log("updated ajay ajay ajay ajay");
   try {
+
     const userId = req.session._id;
     if (!userId) {
-      res.status(401).json({
+	return  res.status(401).json({
         msg: "login first",
       });
     }
@@ -104,7 +106,7 @@ export async function addItemToCart(req, res) {
     if (!cart) {
       cart = new Cart({
         userId: userId,
-        items: [{ productId: productId, price: product.price }],
+        items: [{ productId: productId, price: product.price,quantity:safeQuantity }],
       });
       await cart.save();
     } else {
@@ -114,7 +116,7 @@ export async function addItemToCart(req, res) {
       if (itemIindex > -1) {
         cart.items[itemIindex].quantity += safeQuantity;
       } else {
-        cart.items.push({ productId, price: product.price });
+        cart.items.push({ productId, price: product.price,quantity:safeQuantity });
       }
     }
 
@@ -124,10 +126,10 @@ export async function addItemToCart(req, res) {
     );
 
     await cart.save();
-    res.status(200).json({ msg: "added to cart", cart });
+	return res.status(200).json({ msg: "added to cart", cart });
   } catch (error) {
     console.log("error-=-", error);
-    res.status(400).json({
+   return  res.status(400).json({
       msg: error.message,
     });
   }

@@ -58,7 +58,7 @@ const ProductDetails = () => {
       {/* Product Image */}
       <div className="w-full overflow-hidden rounded-md bg-gray-100">
         <img
-          src={`${API_URL}${product.image}`}
+          src={`${API_URL.replace('/api','')}${product.image}`}
           alt="shirt"
           className="w-full h-96 object-cover"
         />

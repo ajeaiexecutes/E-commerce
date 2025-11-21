@@ -25,7 +25,7 @@ const ProductGrid = () => {
   return (
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-6 px-4 md:px-12 py-6 ">
       
-      {products.map((item) => (
+      { products.map((item) => (
         <div key={item._id} onClick={()=>navigate(`/productDetails/${item._id}`)} className="group border-b border-gray-300 pb-3">
           
           {/* Product Image */}
@@ -77,3 +77,4 @@ const ProductGrid = () => {
 }
 
 export default ProductGrid
+
