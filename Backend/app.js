@@ -52,7 +52,8 @@ app.use(session({
         client:mongoose.connection.getClient(),
         collectionName:'sessions'
     }),
-   cookie: { //secure:false
+   cookie: { 
+       secure:false
        maxAge: 1000 * 60 * 60
     }
 }));
