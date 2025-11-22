@@ -53,7 +53,7 @@ app.use(session({
         collectionName:'sessions'
     }),
    cookie: { 
-       secure:false
+       secure:false,
        maxAge: 1000 * 60 * 60
     }
 }));
