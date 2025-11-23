@@ -1,5 +1,4 @@
 import express from "express";
-// import { register } from "../Controllers/userController.js";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import { adminAuth } from "../Middleware/adminAuth.js";
@@ -37,7 +36,7 @@ const upload = multer({ storage });
 router.post('/register', auth.register);
 router.post('/login',  auth.userLogin);
 router.post('/admin/login', auth.adminLogin);
-router.post('/logout',userAuth, auth.logout);
+router.delete('/logout',userAuth, auth.logout);
 
 
 router.get('/products', usercontroller.getAllProducts);

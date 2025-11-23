@@ -14,7 +14,7 @@ const Navbar = () => {
  
   async function handleLogout() {
     try {
-      const res = await api.post('/logout');
+      const res = await api.delete('/logout');
       setIsLogged(false); 
       console.log("response on logout",res)
       toast.success("Logout sucessfull");
