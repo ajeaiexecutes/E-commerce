@@ -1,8 +1,4 @@
 import User from "../Models/userSchema.js";
-// import { hashpassword } from '../Middleware/adminAuth.js';
-// import { verifypassword } from '../Middleware/adminAuth.js';
-// import { hashedpassword } from '../Middleware/userAuth.js';
-// import { verifypassword } from '../Middleware/userAuth.js';
 import * as adminhelper from "../Middleware/adminAuth.js";
 import * as userhelper from "../Middleware/userAuth.js";
 import Cart from "../Models/cartSchema.js";
@@ -10,83 +6,9 @@ import Order from "../Models/orderSchema.js";
 import Product from "../Models/productsSchema.js";
 import Category from "../Models/categorySchema.js";
 
-// export async function register(req, res) {
-//     try {
-//         const { name,email, password ,role} = req.body;
-//         if (!name||!email || !password) {
-//             return res.status(400).json({msg:'error'})
-//         }
-
-//         const hash = await adminhelper.hashpassword(password);
-//         const user = new User({ name, email, password:hash, role });
-//         console.log(user);
-
-//         await user.save();
-
-//         //create session
-
-//         req.session.user = user._id;
-//         req.session.role = user.role;
-
-//         return res.status(201).json({
-//             msg: 'registerd'
-//         })
-//     }
-//     catch (error) {
-//         console.log(error);
-
-//     }
-
-// }
-
-// export async function login(req,res) {
-//     try {
-//         const { email, password } = req.body;
-//         if (!email || !password) {
-//             return res.status(401).json({msg:'missing error'})
-//         }
-
-//         //find for user in databaase with email
-//         const user = await User.findOne({ email});
-
-//         if (!user) {
-//             return res.status(401).json({msg:' user invlaid'})
-//         }
-//         //   console.log(password,user.password);
-//         const ok = await adminhelper.verifypassword(password,user.password);
-//         if (!ok) {
-//             return res.status(401).json({msg:'password invalid'})
-//         }
-
-//         //if login sucess create a session
-//         req.session.user = user.email;
-//         req.session.role = user.role;
-
-//         console.log(req.session);
-
-//         //after session creation respond
-//         return res.send({msg:'logged in'})
-
-//     } catch (error) {
-//         return console.log(error);
-//     }
-// }
-
-// export async function logout(req, res) {
-//     req.session.destroy();
-//     res.json({msg:'logout'})
-
-// }
-
-//admin dashboard
-export async function adminDashboard(req, res) {
-  return res.json({
-    msg: "welcom admin",
-  });
-}
 //cart
 export async function addItemToCart(req, res) {
-	console.log("updated ajay ajay ajay ajay");
+	
   try {
 
     const userId = req.session._id;
@@ -179,16 +101,14 @@ export async function updateCart(req, res) {
 export async function deleteCartItem(req, res) {
   try {
     const userId = req.session._id;
-    const { productId } = req.params.id;
+    const id = req.params.id;
 
-    let cart = await Cart.findOne({ userId });
-    cart.items = cart.items.filter(
-      (item) => item.productId.toString() != productId
-    );
+        let cart = await Cart.findOneAndUpdate({ userId:userId },{$pull:{items:{_id:id}}},{new:true});
+
     await cart.save();
     res.status(200).json({ message: "Item removed", cart });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(400).json({ error: error });
   }
 }
 

@@ -23,6 +23,7 @@ import OrderHistory from "./components/UserInterface/Orderhistory";
 import { logginContext } from "./context/LogginContext";
 import { dropDown } from "./context/LogginContext";
 import { useState } from "react";
+import Layout from "./Layout";
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -56,7 +57,10 @@ function App() {
 
             <Route path="/login" element={<UserLogin />}></Route>
 
-            <Route path="/" element={<Home />}></Route>
+            <Route path="/" element={<Layout />}>
+
+	    <Route index element={<Home/>}/> 
+
 
             <Route path="/products" element={<ProductGrid />}></Route>
             <Route
@@ -64,11 +68,15 @@ function App() {
               element={<ProductDetails />}
             ></Route>
 
-            <Route path="/cart" element={<CartItem />}></Route>
-
             <Route path="/order" element={<Placeorder />}></Route>
 
             <Route path="/orders" element={<OrderHistory />}></Route>
+
+	   </Route>
+
+	    <Route path="/cart" element={<CartItem />}></Route>
+
+
           </Routes>
         </Router>
 

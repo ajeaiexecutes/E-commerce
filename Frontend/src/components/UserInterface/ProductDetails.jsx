@@ -21,7 +21,7 @@ const ProductDetails = () => {
       const res = await api.get(`/product/${id}`);
       setProduct(res.data.data);
       
-      console.log("product deatails",res.data);
+      console.log("product deatails",res.data.data);
       
       
     } catch (error) {
@@ -48,7 +48,7 @@ const ProductDetails = () => {
       console.log("result",res)
       
     } catch (error) {   //trycatch revise
-      toast.error("failed");
+      toast.error("You are not Logged In");
       console.log("error",error.response);  
     }
   }
@@ -58,8 +58,8 @@ const ProductDetails = () => {
       {/* Product Image */}
       <div className="w-full overflow-hidden rounded-md bg-gray-100">
         <img
-          src={`${API_URL.replace('/api','')}${product.image}`}
-          alt="shirt"
+          src={`${API_URL}${product.image}`}
+          alt ="shirt"
           className="w-full h-96 object-cover"
         />
       </div>

@@ -6,7 +6,7 @@ import { dropDown, logginContext } from "../../context/LogginContext";
 import api from "../../axios/axios";
 import { toast } from "react-toastify";
 
-const Navbar = ({ scrollToCategory }) => {
+const Navbar = () => {
   const navigate=useNavigate()
 
   const { isLogged, setIsLogged } = useContext(logginContext);
@@ -37,8 +37,8 @@ const Navbar = ({ scrollToCategory }) => {
 
         {/* Center Menu */}
         <ul className="hidden md:flex md:gap-4  lg:gap-8 text-sm text-gray-800">
-          <li><Link to="/home" className="hover:text-black">Home</Link></li>
-          <li className="hover:text-black" onClick={scrollToCategory}>Shop By Category</li>
+          <li><Link to="/" className="hover:text-black">Home</Link></li>
+          <li><Link to="/categories" className="hover:text-black">Shop By Category</Link></li>
           <li><Link to="/products" className="hover:text-black">Shop By Product</Link></li>
           <li><Link to="/journal" className="hover:text-black">The Beyours Journal</Link></li>
         </ul>

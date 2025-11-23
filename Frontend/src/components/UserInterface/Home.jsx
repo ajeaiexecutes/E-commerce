@@ -8,33 +8,23 @@ import { dropDown } from "../../context/LogginContext";
 
 
 const Home = () => {
-  const categoryRef = useRef(null);
 
   const { open, setOpen } = useContext(dropDown);
 
-
-  const scrollToCategory = () => {
-    categoryRef.current.scrollIntoView({ behavior: "smooth" });
-  };
   return (
     <div onClick={() => {
       if (open) {
         setOpen(!open)
       }
      }}>
-      <Navbar scrollToCategory={scrollToCategory} />
-        
-      
-
-      
+           
         <Banner />
-      
-      <div ref={categoryRef}>
+         
         <ShopByCategory />
-      </div>
-      
-      <InvestInClassic />
-      <Footer />
+   
+       <InvestInClassic />
+     
+       <Footer />
       
     </div>
   );
