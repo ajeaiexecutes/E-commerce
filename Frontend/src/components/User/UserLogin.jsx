@@ -21,11 +21,11 @@ const UserLogin = () => {
       const res = await api.post("/login", { email, password });
       console.log("Response:", res);
       setIsLogged(true);
-      alert("Login successful");
+      toast("Login successful");
       navigate("/");
     } catch (err) {
       console.error("Login error:", err);
-      alert(err.response?.data?.message || "Login failed");
+      toast(err.response?.data?.message || "Login failed");
     }
   }
  

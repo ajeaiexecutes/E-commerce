@@ -1,0 +1,101 @@
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import api from "../../axios/axios";
+import { toast } from "react-toastify";
+
+const ProductDetails = () => {
+  const { id } = useParams();//get product id from url
+  const [product, setProduct] = useState([]);
+  // const [isLoggedin, setIsLoggedin] = useState(false);
+  const navigate = useNavigate();
+  //lazy loading
+
+  
+      const API_URL = import.meta.env.VITE_API_URL;
+
+  
+  useEffect(() => {
+    
+    const fetchProduct = async () => {
+    try {
+      const res = await api.get(`/product/${id}`);
+      setProduct(res.data.data);
+      
+      console.log("product deatails",res.data.data);
+      
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  fetchProduct(); 
+  }, [id])
+  
+  async function addToCart() {
+    try {
+      const res = await api.post("/cart", { productId: id }, { withCredentials: true });
+      if (res) {
+        
+        toast.success("added");
+        navigate("/products")
+      } else {
+        toast.error("You gotta login first")
+        navigate("/login")
+      }
+
+      
+      console.log("result",res)
+      
+    } catch (error) {   //trycatch revise
+      toast.error("You are not Logged In");
+      console.log("error",error.response);  
+    }
+  }
+
+  return (
+'    <div className="max-w-md mx-auto px-4 py-6">
+      {/* Product Image */}
+      <div className="w-full overflow-hidden rounded-md bg-gray-100">
+        <img
+          src={`${API_URL}${product.image}`}
+          alt ="shirt"
+          className="w-full h-96 object-cover"
+        />
+      </div>
+
+      {/* Title */}
+      <h1 className="text-2xl font-semibold text-gray-900 mt-4">
+       {product.name}
+      </h1>
+
+      {/* Subtitle */}
+      <p className="text-sm text-gray-500 mt-1">
+         {product.title}
+      </p>
+
+      {/* Price */}
+      <div className="mt-3 flex items-center gap-2">
+        <span className="text-lg font-semibold text-gray-900">
+          Rs. {product.price}
+        </span>
+        {/* {product && (
+          <span className="line-through text-gray-400 text-sm">
+            Rs. {product}
+          </span>
+        )} */}
+      </div>
+
+      <hr className="my-5" />
+
+      {/* Add to Bag Button */}
+      <button onClick={addToCart}  type="button" className="w-full bg-black text-white py-3 rounded-md font-medium tracking-wide hover:bg-gray-900 transition">
+        Add To Bag
+      </button>
+
+      <hr className="mt-5" />
+    </div>
+  );
+};
+
+export default ProductDetails;

@@ -7,27 +7,27 @@ const categories = [
   {
     name: "Shirts",
     image: "https://www.beyours.in/cdn/shop/files/shirt.jpg?v=1710234254",
-    path: "/category/shirts",
+    path: "/products",
   },
   {
     name: "T Shirts",
     image: "https://www.beyours.in/cdn/shop/files/t-shirt.jpg?v=1710234254",
-    path: "/category/tshirts",
+    path: "/sdjf",
   },
   {
     name: "Joggers",
     image: "https://www.beyours.in/cdn/shop/files/joggers.jpg?v=1710234254",
-    path: "/category/joggers",
+    path: "/husfkj",
   },
   {
     name: "Trousers",
     image: "	https://www.beyours.in/cdn/shop/files/trouser.jpg?v=1710234924",
-    path: "/category/trousers",
+    path: "/asff",
   },
   {
     name: "Winter",
     image: "https://www.beyours.in/cdn/shop/files/winter.jpg?v=1710234254",
-    path: "/category/winter",
+    path: "/sfsf",
   },
 ];
 

@@ -24,6 +24,9 @@ import { logginContext } from "./context/LogginContext";
 import { dropDown } from "./context/LogginContext";
 import { useState } from "react";
 import Layout from "./Layout";
+import ShopByCategory from "./components/UserInterface/Categories";
+import NotFound from "./components/UserInterface/NotFound";
+
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
@@ -76,6 +79,12 @@ function App() {
 
 	    <Route path="/cart" element={<CartItem />}></Route>
 
+
+
+	    <Route path="/categories" element={<ShopByCategory />}></Route>
+
+
+              <Route path="*" element={<NotFound />}></Route>
 
           </Routes>
         </Router>

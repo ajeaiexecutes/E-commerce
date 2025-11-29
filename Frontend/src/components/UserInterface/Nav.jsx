@@ -18,7 +18,7 @@ const Navbar = () => {
       setIsLogged(false); 
       console.log("response on logout",res)
       toast.success("Logout sucessfull");
-      navigate('/login')
+      navigate('/')
     } catch (error) {
       toast.error('something went wrong');
       console.log(error);
@@ -45,7 +45,8 @@ const Navbar = () => {
  
         {/* Right Side */}
         <div className=" flex items-center gap-5 text-sm">
-          <Link to="/search" className="hover:text-black">Search</Link>
+      {/* <h2 className="hover:text-black">search</h2>/*} 
+       {/*<Link to="/search" className="hover:text-black">Search</Link>*/}
           {
             isLogged ?
             <div className=" flex relative">
