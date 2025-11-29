@@ -34,7 +34,7 @@ const Placeorder = () => {
             const res = await api.post("/order", formData)
              console.log(res);
              toast.success("order placed");
-             navigate("/home")
+             navigate("/")
         } catch (error) {
            console.log(error);
            toast.error("something went wrong")
