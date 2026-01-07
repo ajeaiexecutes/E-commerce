@@ -32,7 +32,8 @@ app.use(express.urlencoded({ extended: true }));
 
 //to allow these ports can access
 app.use(cors({
-    origin : ['http://localhost:5173','http://localhost:5174','http://localhost:5176','http://beyours.duckdns.org','https://be-yours.vercel.app/'],
+    origin : ['http://localhost:5173','http://localhost:5174','http://localhost:5176','http://beyours.duckdns.org','https://be-yours.vercel.app'],
+	methods: ["GET", "POST", "PUT", "DELETE"],
     credentials : true,
 }))
 
