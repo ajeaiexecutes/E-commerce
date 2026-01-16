@@ -75,7 +75,7 @@ function App() {
 
             <Route path="/orders" element={<OrderHistory />}></Route>
 
-	   </Route>
+
 
 	    <Route path="/cart" element={<CartItem />}></Route>
 
@@ -83,6 +83,7 @@ function App() {
 
 	    <Route path="/categories" element={<ShopByCategory />}></Route>
 
+					   </Route>
 
               <Route path="*" element={<NotFound />}></Route>
 
