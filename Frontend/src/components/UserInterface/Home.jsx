@@ -3,7 +3,7 @@ import Banner from "./Banner";
 import Navbar from "./Nav";
 import ShopByCategory from "./Categories";
 import InvestInClassic from "./Invest";
-import Footer from "./Footer";
+
 import { dropDown } from "../../context/LogginContext";
 
 
@@ -24,7 +24,7 @@ const Home = () => {
    
        <InvestInClassic />
      
-       <Footer />
+       
       
     </div>
   );
